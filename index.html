@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: #020617;
+}
+
+nav h2 {
+    color: #38bdf8;
+}
+
+nav a {
+    color: #e2e8f0;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: #38bdf8;
+}
+
+.hero p {
+    margin: 15px 0;
+    opacity: 0.8;
+}
+
+.hero button {
+    padding: 12px 20px;
+    border: none;
+    background: #38bdf8;
+    color: #020617;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* ABOUT */
+.about {
+    max-width: 800px;
+    margin: 60px auto;
+    text-align: center;
+    padding: 20px;
+}
+
+/* PROJECTS */
+.projects {
+    padding: 40px;
+}
+
+.projects h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    background: #334155;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #38bdf8;
+}
+
+.card p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 12px;
+    background: #38bdf8;
+    color: #020617;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #020617;
+    margin-top: 40px;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <h6>REGISTRATION NUMBER: 22/EG/CO/1695</h6>
+    <h2>MyPortfolio</h2>
+    <div>
+        <a href="#">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Hello, I'm a Web Developer</h1>
+    <p>Building clean and modern web experiences</p>
+    <button onclick="document.getElementById('projects').scrollIntoView()">View My Work</button>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <h2>About Me</h2>
+    <p>
+        I am a student passionate about web development. This portfolio showcases my coursework
+        and projects from CPE 314. I enjoy building responsive and interactive web applications.
+    </p>
+    <p><strong>ID:</strong> 22/EG/CO/1774</p>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+    <h2>My Projects</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Project 1</h3>
+            <p>Basic HTML Webpage</p>
+            <a href="lab1.html">View</a>
+        </div>
+
+        <div class="card">
+            <h3>Project 2</h3>
+            <p>Form Design</p>
+            <a href="lab2.html">View</a>
+        </div>
+
+        <div class="card">
+            <h3>Project 3</h3>
+            <p>Responsive Layout</p>
+            <a href="lab3.html">View</a>
+        </div>
+
+        <div class="card">
+            <h3>Project 4</h3>
+            <p>Navigation Bar</p>
+            <a href="lab4.html">View</a>
+        </div>
+
+        <div class="card">
+            <h3>Project 5</h3>
+            <p>JavaScript Basics</p>
+            <a href="lab5.html">View</a>
+        </div>
+
+        <div class="card">
+            <h3>Project 6</h3>
+            <p>DOM Manipulation</p>
+            <a href="lab6.html">View</a>
+        </div>
+
+        <div class="card">
+            <h3>Project 7</h3>
+            <p>JS Events</p>
+            <a href="lab7.html">View</a>
+        </div>
+
+        <div class="card">
+            <h3>Project 8</h3>
+            <p>To-Do App</p>
+            <a href="todo.html">View</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <h1>REGISTRATION NUMBER: 22/EG/CO/1695</h1>
+    <p>© 2026 My Portfolio</p>
+</footer>
+
+</body>
+</html>
