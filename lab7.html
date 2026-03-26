@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive JS Demo</title>
+    <style>
+        :root { --primary-bg: #f4f4f4; --box-color: #e0e0e0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 40px; color: #333; }
+        .interactive-node { padding: 15px; border-bottom: 1px solid #ddd; margin-bottom: 10px; }
+        #hoverArea { width: 200px; height: 60px; background: var(--box-color); display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 8px; transition: all 0.4s ease; }
+        .highlight { color: #2c3e50; font-weight: 800; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+
+    <section class="interactive-node">
+        <button id="mainBtn">Action Trigger</button>
+        <input type="text" id="keyListener" placeholder="Monitor keystrokes...">
+    </section>
+
+    <section class="interactive-node">
+        <div id="hoverArea">Hover Detection</div>
+    </section>
+
+    <section class="interactive-node">
+        <div>Current Value: <span id="displayCount" class="highlight">0</span></div>
+        <button id="incrementTrigger">Add +1</button>
+    </section>
+
+    <section class="interactive-node">
+        <form id="authForm">
+            <input type="text" id="userEmail" placeholder="Enter your email" required>
+            <button type="submit">Verify Email</button>
+        </form>
+        <p id="statusMsg"></p>
+        <a href="https://wikipedia.org" id="blockedLink">Disabled External Link</a>
+    </section>
+
+    <section class="interactive-node">
+        <p>Random Broadcast: <span id="dynamicText">Initializing...</span></p>
+    </section>
+
+    <script>
+        // --- Selection Logic ---
+        const $ = (id) => document.getElementById(id); // Shorthand selector helper
+
+        // --- Feature 1: Keystroke & Click ---
+        $('mainBtn').onclick = () => alert("System: Button Activated!");
+
+        $('keyListener').onkeyup = (e) => {
+            console.log(`Input Log: ${e.key}`);
+        };
+
+        // --- Feature 1: Hover Effect ---
+        const box = $('hoverArea');
+        box.onmouseover = () => box.style.background = "#5dade2";
+        box.onmouseout = () => box.style.background = "#e0e0e0";
+
+        // --- Feature 2: Numeric Tracker ---
+        let currentTotal = 0;
+        $('incrementTrigger').addEventListener('click', () => {
+            currentTotal += 1;
+            $('displayCount').innerText = currentTotal;
+        });
+
+        // --- Feature 3 & 5: Validation & Navigation Control ---
+        $('authForm').onsubmit = function(event) {
+            event.preventDefault(); // Stop page reload
+            const val = $('userEmail').value;
+            const msg = $('statusMsg');
+
+            if (val.includes('@')) {
+                msg.textContent = "Success: Valid Format Detected.";
+                msg.style.color = "#27ae60";
+            } else {
+                msg.textContent = "Alert: Invalid Email Address.";
+                msg.style.color = "#e74c3c";
+            }
+        };
+
+        $('blockedLink').onclick = (e) => {
+            e.preventDefault();
+            console.warn("Navigation attempt blocked by preventDefault().");
+        };
+
+        // --- Feature 4: Looping Randomizer ---
+        const phrases = [
+            "Data is loading...",
+            "Stay focused on the goal.",
+            "JavaScript logic applied.",
+            "Randomness is key.",
+            "Function executed successfully."
+        ];
+
+        setInterval(() => {
+            const pick = phrases[Math.floor(Math.random() * phrases.length)];
+            const target = $('dynamicText');
+            target.textContent = pick;
+            // Generate a random dark color
+            target.style.color = `rgb(${Math.random()*150}, ${Math.random()*150}, ${Math.random()*150})`;
+        }, 5000);
+
+    </script>
+</body>
+</html>

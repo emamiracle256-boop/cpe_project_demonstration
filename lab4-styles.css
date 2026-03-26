@@ -1,0 +1,70 @@
+/* Basic Reset */
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* 4. Navbar using Flexbox */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 1rem 2rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px; /* Modern way to space flex items */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+/* 1. Convert to Grid */
+.container {
+    display: grid;
+    /* This creates 3 equal columns */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 40px;
+}
+
+/* 2. Item Styling & Hover Effects */
+.item {
+    background-color: lightblue;
+    padding: 40px;
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.3s, background-color 0.3s;
+    border: 2px solid #5da9c2;
+}
+
+.item:hover {
+    background-color: #5da9c2;
+    color: white;
+    transform: translateY(-5px); /* Gentle lift effect */
+    cursor: pointer;
+}
+
+/* 3. Responsive Design (Under 600px) */
+@media (max-width: 600px) {
+    .container {
+        /* Change from 3 columns to 1 column */
+        grid-template-columns: 1fr;
+    }
+
+    .item {
+        background-color: #ffb7b2; /* Change color for mobile */
+    }
+
+    .navbar, .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

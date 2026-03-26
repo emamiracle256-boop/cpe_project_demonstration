@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Interactive Lab</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; padding: 20px; color: #333; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .section { border-bottom: 1px solid #eee; padding: 15px 0; }
+        .section:last-child { border-bottom: none; }
+        button { background: #6200ee; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #3700b3; }
+        input { padding: 8px; border: 1px solid #ddd; border-radius: 4px; width: 60%; }
+        .ghost-mode { opacity: 0.2; filter: blur(2px); }
+        #output-box { margin-top: 10px; color: #6200ee; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Project: DOM Master</h2>
+
+    <div class="section">
+        <p><strong>1. Style Injection:</strong></p>
+        <div id="text-target"></div>
+        <button onclick="stepOne()">Create Paragraph</button>
+    </div>
+
+    <div class="section">
+        <p><strong>2. Dynamic Inventory:</strong></p>
+        <ul id="inventory-list">
+            <li>Default Item</li>
+        </ul>
+        <button onclick="stepTwo()">Add Item</button>
+    </div>
+
+    <div class="section">
+        <p><strong>3. Visibility Toggle:</strong></p>
+        <div class="card-element">"The secret of change is to focus all of your energy..."</div>
+        <button onclick="stepThree()">Toggle Blur Effect</button>
+    </div>
+
+    <div class="section">
+        <p><strong>4 & 5. Data & Error Catch:</strong></p>
+        <input type="text" id="user-data" placeholder="Write a message...">
+        <button onclick="stepFour()">Process</button>
+        <div id="output-box"></div>
+    </div>
+</div>
+
+<script>
+    // 1. Create and Color
+    const stepOne = () => {
+        const p = document.createElement("p");
+        p.textContent = "Successfully generated and colored!";
+        p.style.color = "#ff5722"; // Deep Orange
+        document.getElementById("text-target").appendChild(p);
+    };
+
+    // 2. Dynamic List Append
+    const stepTwo = () => {
+        const ul = document.querySelector("#inventory-list");
+        const li = document.createElement("li");
+        li.textContent = `New Entry #${ul.children.length + 1}`;
+        ul.appendChild(li);
+    };
+
+    // 3. QuerySelector Toggle (Using a class filter)
+    const stepThree = () => {
+        const el = document.querySelector(".card-element");
+        el.classList.toggle("ghost-mode");
+    };
+
+    // 4. Input Fetch & 5. Error Handling
+    const stepFour = () => {
+        const val = document.getElementById("user-data").value;
+        const display = document.getElementById("output-box");
+
+        // Display Input
+        display.innerHTML = val ? `Received: ${val}` : "Input is empty!";
+
+        // Error Handling Logic
+        try {
+            console.log("Searching for a missing element...");
+            const missing = document.querySelector(".not-real");
+            if (!missing) {
+                throw new Error("Target Element 404: Not Found in DOM.");
+            }
+        } catch (err) {
+            console.warn("Caught Error Successfully:", err.message);
+        }
+    };
+</script>
+
+</body>
+</html>

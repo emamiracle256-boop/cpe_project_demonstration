@@ -1,0 +1,15 @@
+body {
+    /* 4. Background Gradient */
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+p {
+    color: green;
+    font-size: 16px;
+    background-color: white;
+    padding: 10px;
+    display: inline-block;
+}
